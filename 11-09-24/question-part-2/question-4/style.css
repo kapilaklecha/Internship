@@ -1,0 +1,13 @@
+.q-4 {
+    color: green;
+    text-decoration: solid;
+    font-weight: 400;
+    border: black 1px solid;
+    width: fit-content;
+    padding: 5px;
+}
+
+.q-4:hover {
+   color: red;
+}
+

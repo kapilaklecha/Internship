@@ -1,0 +1,11 @@
+.q-5 {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border-width: 3px;
+    background-color: blue;
+}
+
+.q-5:hover {
+    background-color: red;
+}
