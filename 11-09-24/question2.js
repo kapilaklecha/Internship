@@ -17,7 +17,7 @@ function decode(code) {
     let char = code[i];
     i++;
     let num = "";
-    while (i < code.length && !isNaN(input[i])) {
+    while (i < code.length && !isNaN(code[i])) {
       num += code[i];
       i++;
     }
