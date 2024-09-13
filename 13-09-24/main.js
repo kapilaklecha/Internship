@@ -1,35 +1,53 @@
+let balls = [];
 let div = document.querySelector(".ball"),
-  v = { x: 0.5, y: 3 },
-  pos = { x: 0, y: 0 },
   g = 0.5,
   absorption = 0.7,
   bottom = 650;
 
-function calc() {
-  pos.x += v.x;
-  pos.y += v.y;
-  v.y += g;
-  if (pos.y > bottom) {
-    pos.y = bottom;
-    v.y = -v.y * absorption;
+class Ball {
+  constructor(x, y, vx, vy) {
+    this.pos = { x: x, y: y };
+    this.v = { x: vx, y: vy };
+
+    this.ele = div.cloneNode();
+    document.body.appendChild(this.ele);
   }
-  if (pos.x < 0 || pos.x > 620) v.x = -v.x;
+
+  calc() {
+    this.pos.x += this.v.x;
+    this.pos.y += this.v.y;
+    this.v.y += g;
+
+    if (this.pos.y > bottom) {
+      this.pos.y = bottom;
+      this.v.y = -this.v.y * absorption;
+    }
+
+    if (this.pos.x < 0 || this.pos.x > 620) {
+      this.v.x = -this.v.x;
+    }
+  }
+
+  move() {
+    this.ele.style.transform = `translate(${this.pos.x}px, ${this.pos.y}px)`;
+  }
 }
 
 (function loop() {
-  calc();
-  move(div, pos);
-
+  for (let ball of balls) {
+    ball.calc();
+    ball.move();
+  }
   requestAnimationFrame(loop);
 })();
 
-function move(el, p) {
-  el.style.transform = el.style.webkitTransform =
-    "translate(" + p.x + "px," + p.y + "px)";
+function position(e) {
+  let x = e.clientX - 70;
+  let y = e.clientY;
+  let vx = 0.5;
+  let vy = 10;
+  let newBall = new Ball(x, y, vx, vy);
+  balls.push(newBall);
 }
 
-function position(e) {
-  pos.x = e.clientX - 70;
-  pos.y = e.clientY;
-}
 document.addEventListener("click", position);
