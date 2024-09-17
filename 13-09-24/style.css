@@ -1,12 +1,21 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+#play-area {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
 .ball {
-    animation: demo 3s linear infinite;
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    background:black;
-    position:fixed;
-    left:100px;
-  }
-  
- 
-  
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: #0a0f12;
+  border-radius: 50%;
+}
