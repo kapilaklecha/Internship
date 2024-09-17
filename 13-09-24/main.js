@@ -49,54 +49,48 @@ class Ball {
   }
 
   checkCollision(otherBall) {
+    const rSum = ballRadius * 2;
     const dx = otherBall.x - this.x;
     const dy = otherBall.y - this.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
 
-    if (distance < 2 * ballRadius) {
-      this.resolveCollision(otherBall); // Handle collision response
+    // Check if the distance between the balls is less than their combined radius
+    if (distance < rSum) {
+      this.resolveCollision(otherBall);
     }
   }
 
-  // Handle the collision response based on physics
   resolveCollision(otherBall) {
     const dx = otherBall.x - this.x;
     const dy = otherBall.y - this.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
 
-    // Normalize the direction vector
-    const normalX = dx / distance;
-    const normalY = dy / distance;
+    // Normal vector between the balls
+    const normal = [dx / distance, dy / distance];
 
-    // Calculate relative velocity
-    const relativeVelocityX = this.vx - otherBall.vx;
-    const relativeVelocityY = this.vy - otherBall.vy;
+    // Relative velocity
+    const relativeVelocity = [otherBall.vx - this.vx, otherBall.vy - this.vy];
 
-    // Calculate the velocity along the normal direction (dot product)
+    // Velocity along the normal direction
     const velocityAlongNormal =
-      relativeVelocityX * normalX + relativeVelocityY * normalY;
+      relativeVelocity[0] * normal[0] + relativeVelocity[1] * normal[1];
 
-    console.log(relativeVelocityX);
-
-    // If the balls are moving away from each other, do nothing
+    // If balls are moving apart, no need to resolve the collision
     if (velocityAlongNormal > 0) return;
 
-    // Apply the impulse to both balls (assuming equal mass)
-    const impulse = (2 * velocityAlongNormal) / (this.mass + otherBall.mass);
-    this.vx -= impulse * normalX * otherBall.mass;
-    this.vy -= impulse * normalY * otherBall.mass;
-    otherBall.vx += impulse * normalX * this.mass;
-    otherBall.vy += impulse * normalY * this.mass;
+    // Coefficient of restitution (elasticity)
+    const restitution = 0.75;
 
-    // Separate the balls to prevent overlapping
-    const overlap = 2 * ballRadius - distance;
-    const separationX = (overlap * normalX) / 2;
-    const separationY = (overlap * normalY) / 2;
-    this.x -= separationX;
-    this.y -= separationY;
-    otherBall.x += separationX;
-    otherBall.y += separationY;
-    console.log([this.vx, this.vy]);
+    // Impulse scalar based on the restitution and masses of the balls
+    const impulseScalar = -(1 + restitution) * velocityAlongNormal;
+    const totalMass = this.mass + otherBall.mass;
+    const impulse = impulseScalar / totalMass;
+
+    // Apply the impulse to the velocities of both balls
+    this.vx -= impulse * this.mass * normal[0];
+    this.vy -= impulse * this.mass * normal[1];
+    otherBall.vx += impulse * otherBall.mass * normal[0];
+    otherBall.vy += impulse * otherBall.mass * normal[1];
   }
 }
 
