@@ -1,12 +1,19 @@
+:root {
+    --main-bg: white;
+    --hands: #4c4c4c;
+    --font-c: #4c4c4c;
+}
+
 body {
     font-family: sans-serif;
+    background-color: var(--main-bg);
 }
 
 .clock-ana {
     width: 250px;
     height: 250px;
    
-    box-shadow: inset 7px 10px 20px rgba(184, 241, 220, 0.3);
+    box-shadow: inset 7px 10px 20px rgba(38, 40, 39, 0.219);
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -20,13 +27,13 @@ body {
     width: fit-content;
     height: fit-content;
     border-radius: 50%;
-    box-shadow: 6px 4px 20px rgba(184, 241, 220, 0.3);
+    box-shadow:  7px 10px 20px rgba(113, 130, 124, 0.219);
 }
 
 .nums {
     width: 1px;
     height: 20px;
-    background-color: gray;
+    background-color: var(--font-c);
 }
 
 .t-12 {
@@ -77,7 +84,7 @@ body {
 #hands-min {
     width: 6px;
     height: 80px;
-    background-color: #4c4c4c;
+    background-color: var(--hands);
     position: absolute;
     top: 60px;
     left: 49%;
@@ -88,7 +95,7 @@ body {
 #hands-hr {
     width: 8px;
     height: 70px;
-    background-color: #4c4c4c;
+    background-color: var(--hands);
     position: absolute;
     top: 75px;
     left: 50%;
@@ -110,22 +117,23 @@ body {
 }
 
 .clock-digit {
-    color: #4c4c4c;
+    color: var(--font-c);
+    margin-top: 20px;
     font-family: sans-serif;
-    font-size: 50px;
+    font-size: 72px;
     font-weight: 700;
     display: flex;
 }
 
 .am-pm {
-    color: #4c4c4c;
+    color: var(--font-c);
     font-size: 16px;
     margin-left: 15px;
     font-weight: 700;
 }
 
 #date {
-    color: #4c4c4c;
+    color: var(--font-c);
     font-family: sans-serif;
     font-size: 20px;
     font-weight: 700;
@@ -155,11 +163,14 @@ body {
 }
 
 #btn {
+    font-weight: 700;
     border-radius: 50%;
+    color: var(--font-c);
     border: 2px white ;
-    box-shadow: inset 7px 10px 20px rgba(184, 241, 220, 0.3);
-    background-color: white;
+    box-shadow: inset 7px 10px 20px rgba(38, 40, 39, 0.219);
+    background-color: var(--main-bg);
     margin-left:20px;
     height: 50px;
     width: 50px;
 }
+
