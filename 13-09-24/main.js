@@ -10,8 +10,10 @@ class Ball {
     this.vx = Math.random() * 10 - 5;
     this.vy = Math.random() * -10;
     this.mass = 1;
+    this.color = "hsla(" + Math.random() * 360 + ", 100%, 50%, 1)";
     this.el = document.createElement("div");
     this.el.classList.add("ball");
+    this.el.style.backgroundColor = this.color;
     this.updatePosition();
     playArea.appendChild(this.el);
   }
