@@ -3,6 +3,11 @@ const minHand = document.getElementById("hands-min");
 const hrHand = document.getElementById("hands-hr");
 const clockDigit = document.getElementById("digit-parent");
 let dateToday = document.querySelector("#date");
+const clockAna = document.getElementsByClassName("clock-ana");
+const root = document.querySelector(":root");
+const btnD = document.querySelector("#btn");
+
+const nums = document.getElementsByClassName("nums");
 
 function setClock() {
   const now = new Date();
@@ -53,15 +58,25 @@ setInterval(setClock, 1000);
 setClock();
 
 let btn = document.getElementById("btn");
+let darkMode = false;
 
 function darkTheme() {
-  document.body.style.backgroundColor = "black";
-  minHand.style.backgroundColor = "white";
-
-  hrHand.style.backgroundColor = "white";
-  btn.style.backgroundColor = "black";
-  clockDigit.style.backgroundColor = "white";
-  dateToday.style.color = "white";
+  if (!darkMode) {
+    darkMode = true;
+  } else {
+    darkMode = false;
+  }
+  if (darkMode) {
+    root.style.setProperty("--font-c", "white");
+    root.style.setProperty("--hands", "white");
+    root.style.setProperty("--main-bg", "#4c4c4c");
+    btnD.innerText = "Light";
+  } else {
+    root.style.setProperty("--font-c", "#4c4c4c");
+    root.style.setProperty("--hands", "#4c4c4c");
+    root.style.setProperty("--main-bg", "white");
+    btnD.innerText = "Dark";
+  }
 }
 
 btn.addEventListener("click", darkTheme);
