@@ -177,5 +177,6 @@ body {
     width: 50px;
     position: relative;
     bottom: 20px;
+    cursor: pointer;
 }
 
