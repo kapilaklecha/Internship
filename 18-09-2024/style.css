@@ -3,19 +3,15 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 .parent {
     display: flex;
 }
-
-
 .left {
     width: 70%;
     height: 100vh;
     background-color: aqua;
     
 }
-
 .right {
     width: 30%;
     height: 100vh;
@@ -23,30 +19,95 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+   
 }
-
+.right-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 button {
     margin: 5px;
     padding: 5px 10px;
     border: 1px solid black;
     border-radius: 3px;
     background-color: white;
-
-
 }
-
 .btns {
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-weight: 700;
+    font-weight: 900;
+    
 }
-
 #reset {
     width: 100%;
 }
-
 iframe {
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
+.btn {
+    background-color: burlywood;
+    border-color: white;
+    font-size: 28px;
+    box-shadow: 4px 2px 2px rgba(38, 40, 39, 0.219);
+}
+.btn:hover {
+    cursor: pointer;
+}
+.right h3 {
+ font-size: 24px;
+ font-weight: 300;
+}
+.btn{
+    position: relative;
+    background-color:  rgb(230, 180, 115);
+    border-radius: 4em;
+    font-size: 16px;
+    color: white;
+    padding: 0.8em 1.8em;
+    cursor:pointer;
+    
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition-duration: 0.4s;
+    
+  }
+  
+  .btn:hover {
+    transition-duration: 0.1s;
+    background-color:  rgb(184, 128, 55);
+  }
+  
+  .btn:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-radius: 4em;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+    box-shadow: 0 0 10px 20px rgb(128, 128, 128);
+  }
+  
+  .btn:active:after {
+    box-shadow: 0 0 0 0 white;
+    position: absolute;
+    border-radius: 4em;
+    left: 0;
+    top:0;
+    opacity: 1;
+    transition: 0s;
+  }
+  
+  .button:active {
+    top: 1px;
+  }
