@@ -2,7 +2,7 @@ const playArea = document.getElementById("play-area");
 const starter = document.querySelector("#starter");
 const gravity = 0.5;
 const damping = 0.75;
-const ballRadius = 20;
+const ballRadius = 10;
 
 class Ball {
   constructor(x, y) {
