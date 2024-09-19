@@ -70,12 +70,12 @@ function darkTheme() {
     root.style.setProperty("--font-c", "white");
     root.style.setProperty("--hands", "white");
     root.style.setProperty("--main-bg", "#4c4c4c");
-    btnD.innerText = "Light";
+    btnD.innerHTML = "&#x2600;";
   } else {
     root.style.setProperty("--font-c", "#4c4c4c");
     root.style.setProperty("--hands", "#4c4c4c");
     root.style.setProperty("--main-bg", "white");
-    btnD.innerText = "Dark";
+    btnD.innerHTML = "&#x263D";
   }
 }
 
