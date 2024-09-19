@@ -6,10 +6,25 @@ body, html {
 }
 
 #play-area {
+
   position: relative;
   width: 100vw;
   height: 100vh;
   background-color: #f0f0f0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+#starter {
+  font-size: 98px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 10px;
 }
 
 .ball {
@@ -18,4 +33,11 @@ body, html {
   height: 20px;
   background-color: #0a0f12;
   border-radius: 50%;
+}
+
+@media only screen and (max-width: 370px) {
+  #starter {
+    padding: 20px;
+    font-size: 72px;
+  }
 }
