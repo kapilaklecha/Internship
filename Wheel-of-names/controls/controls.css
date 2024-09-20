@@ -1,6 +1,7 @@
 :root {
     --border-c: rgb(225, 225, 225);
-    --icon-c: rgb(49, 145, 255);
+    --icon-c: #3369e8;
+    --btn-hover: #3369e8db;
 }
 
 * {
@@ -179,4 +180,22 @@ button:hover {
     justify-content: space-between;
 
 }
+
+#add-entry {
+    width: 100%;
+    margin: 10px 0;
+    background-color: var(--icon-c);
+    padding: 10px 10px;
+    border:none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+}
+
+#add-entry:hover {
+background-color: #3369e8db;
+}
+
+
 
