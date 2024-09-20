@@ -9,7 +9,7 @@ const centerX = canvas.width / 2;
 const centerY = canvas.height / 2;
 const numberOfEntries = entries.length;
 const anglePerEntry = (2 * Math.PI) / numberOfEntries;
-
+// testing colors
 const colors = [
   "#FF6347",
   "#FFD700",
