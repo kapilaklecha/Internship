@@ -1,0 +1,78 @@
+:root {
+    --border-c: rgb(225, 225, 225);
+    --icon-c: #3369e8;
+    --btn-hover: #3369e8db;
+}
+
+.winner-parent {
+    font-family: sans-serif;
+    max-width: 600px;
+    max-height: 600px;
+    border: 1px solid var(--border-c);
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+    font-weight: 600;
+}
+
+.greet {
+    background-color: var(--icon-c);
+    color: white;
+    padding: 10px 10px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.winner-name {
+    margin: 20px 10px;
+     font-size: 24px;
+}
+
+button {
+padding: 10px 15px;
+font-weight: 600;
+border: none;
+border-radius: 5px;
+font-size: 16px;
+cursor: pointer;
+
+}
+
+
+.btns {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+    padding:  10px;
+}
+
+.close-modal {
+    background-color: transparent;
+
+}
+.close-modal:hover {
+    background-color: var(--border-c);
+}
+
+.remove-modal {
+    color: white;
+    background-color: var(--icon-c);
+}
+
+.remove-modal:hover {
+    background-color: var(--btn-hover);
+
+}
+
+.close {
+    color: white;
+    font-size: 18px;
+    background-color: transparent;
+}
+
+.close:hover {
+    color: rgb(201, 199, 199);
+    background-color: var(--btn-hover);
+}
