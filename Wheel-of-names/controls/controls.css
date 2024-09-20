@@ -11,6 +11,11 @@
 
 button {
     background-color: transparent;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--border-c);
 }
 
 .controls-parent {
@@ -103,11 +108,12 @@ button {
 }
 
 .close {
-    padding: 5px 10px;
+    padding: 0 10px;
     background-color: transparent;
     border: none;
     font-size: 28px;
     color: gray;
+    margin-bottom: 5px;
 }
 
 #check-hide {
@@ -124,14 +130,15 @@ button {
     border-color: var(--icon-c);
     border-width: 2px;
     position: relative;
-    right: 20px;
-    bottom: 20px;
+    right: 40px;
+    bottom: 55px;
 }
 
 .controls-a-card-sub-2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 10px;
 }
 
 .controls-a-card-sub-1 {
@@ -139,8 +146,8 @@ button {
 }
 
 .controls-a-card-main {
-  
-    width: 60%;
+   margin: 10px;
+    width: 70%;
 }
 
 #entry-name {
@@ -166,8 +173,10 @@ button {
 }
 
 .controls-a-card {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+
 }
 
