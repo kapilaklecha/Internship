@@ -30,21 +30,47 @@
         </header>
 
         <div class="controls-wrapper">
-            <div class="controls-basic">
-                <div class="sub-header">
-                    <button class="sub-h-btn">Shuffle</button><button class="sub-h-btn">
-                        Short
-                    </button><button class="sub-h-btn">Add image</button>
-                    <label for="advance">
-                        <input type="checkbox" name="advance" id="advance">
-                        Advance
-                    </label>
+            <div class="sub-header">
+                <button class="sub-h-btn">Shuffle</button><button class="sub-h-btn">
+                    Short
+                </button><button class="sub-h-btn">Add image</button>
+                <label for="advance">
+                    <input type="checkbox" name="advance" id="advance">
+                    Advance
+                </label>
 
-                </div>
+            </div>
+            <div class="controls-basic">
+
 
                 <textarea name="entries" id="entries-panel"></textarea>
             </div>
+            <div class="controls-advance">
+                <div class="controls-a-card">
+                    <div class="controls-a-card-main">
+                        <label for="entrie-name">
+                            <input type="text" name="entry-name" id="entry-name">
+                        </label>
+                        <div class="controls-a-card-sub-1">
+                            <div class="entry-color-wrapper">
+                                <label for="entry-color">
+                                    <input type="color" name="entry-color" id="entry-color">
+                                </label>
+                            </div>
+                            <button>img</button>
+                        </div>
 
+                    </div>
+                    <div class="controls-a-card-sub-2">
+                        <button class="close">&#215;</button>
+                        <label for="check-hide">
+                            <input type="checkbox" name="check-hide" id="check-hide">
+                        </label>
+                        <button id="open-advance">&#9881;</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 

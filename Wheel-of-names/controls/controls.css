@@ -1,11 +1,16 @@
 :root {
     --border-c: rgb(225, 225, 225);
+    --icon-c: rgb(49, 145, 255);
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+button {
+    background-color: transparent;
 }
 
 .controls-parent {
@@ -72,3 +77,97 @@
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     padding: 10px;
 }
+
+.controls-basic {
+    display: none;
+}
+
+#entry-color {
+    opacity: 0;
+}
+
+.entry-color-wrapper {
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+    background-image: url(../assets/color-picker.png);
+    border: 3px solid rgb(49, 145, 255);
+    border-radius: 10px;
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.entry-color-wrapper:hover {
+    background-color: var(--border-c);
+}
+
+.close {
+    padding: 5px 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 28px;
+    color: gray;
+}
+
+#check-hide {
+    width: 15px;
+    height: 15px;
+}
+
+#open-advance {
+    padding: 0 5px;
+    font-size: 24px;
+    font-weight:900;
+    color: var(--icon-c);
+    border-radius: 10px;
+    border-color: var(--icon-c);
+    border-width: 2px;
+    position: relative;
+    right: 20px;
+    bottom: 20px;
+}
+
+.controls-a-card-sub-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.controls-a-card-sub-1 {
+    display: flex;
+}
+
+.controls-a-card-main {
+  
+    width: 60%;
+}
+
+#entry-name {
+    width: 100%;
+    height: 35px;
+    font-size: 18px;
+     margin-bottom: 10px;
+    padding: 10px;
+    background-color: var(--border-c);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    outline: none;
+    border: none;
+
+}
+
+#entry-name:hover {
+    border-bottom: 1px solid black;
+}
+
+#entry-name:focus {
+    border-bottom: 2px solid var(--icon-c);
+}
+
+.controls-a-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
