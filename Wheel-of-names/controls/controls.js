@@ -43,8 +43,6 @@ hideBtn.addEventListener("click", hideShow);
 
 let currentObject = { text: "" };
 
-let objectsArray = [];
-
 textArea.addEventListener("input", function () {
   currentObject.text = textArea.value;
   console.log(currentObject);
@@ -55,9 +53,6 @@ textArea.addEventListener("keydown", function (event) {
     event.preventDefault();
 
     user.push({ ...currentObject });
-
-    console.log("New object added:", currentObject);
-    console.log("All objects:", user);
 
     textArea.value = "";
     currentObject = { text: "" };
