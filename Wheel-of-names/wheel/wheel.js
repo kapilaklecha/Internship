@@ -22,11 +22,15 @@ const colors = [
   "#9370DB",
 ];
 
+let rotation = 0;
+let isSpinning = false;
+let spinSpeed = 0;
+
 // Function to draw the wheel
-function drawWheel() {
+function drawWheel(rotate) {
   for (let i = 0; i < numberOfEntries; i++) {
     let { text, color } = user[i];
-    const startAngle = i * anglePerEntry;
+    const startAngle = i * anglePerEntry + rotate;
     const endAngle = startAngle + anglePerEntry;
 
     ctx.fillStyle = colors[i % colors.length];
@@ -55,6 +59,28 @@ function drawWheel() {
   }
 }
 
-drawWheel();
+function spinWheel() {
+  if (!isSpinning) return;
+  rotation += spinSpeed;
+  spinSpeed *= 0.98;
+  if (spinSpeed < 0.001) {
+    isSpinning = false;
+    spinSpeed = 0;
+    rotation = 0;
+    return;
+  }
+  drawWheel(rotation);
+  requestAnimationFrame(spinWheel);
+}
 
-function see() {}
+function startSpinning() {
+  console.log();
+  if (isSpinning) return;
+  isSpinning = true;
+  spinSpeed = Math.random() * 2;
+  spinWheel();
+}
+
+canvas.addEventListener("click", startSpinning);
+
+drawWheel(rotation);
