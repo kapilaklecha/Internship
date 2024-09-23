@@ -9,13 +9,8 @@ const hideBtn = document.querySelector("#hide-btn");
 const controlParent = document.querySelector("#controls-board");
 const headerLeftC = document.querySelector(".controls-h-left");
 
-let userObj = {};
-
 textArea.addEventListener("input", () => {
   let textVal = textArea.value;
-  userObj.text = textVal;
-
-  user.push(userObj);
 });
 
 function showTabEntries() {
@@ -45,3 +40,26 @@ function hideShow() {
 }
 
 hideBtn.addEventListener("click", hideShow);
+
+let currentObject = { text: "" };
+
+let objectsArray = [];
+
+textArea.addEventListener("input", function () {
+  currentObject.text = textArea.value;
+  console.log(currentObject);
+});
+
+textArea.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+
+    user.push({ ...currentObject });
+
+    console.log("New object added:", currentObject);
+    console.log("All objects:", user);
+
+    textArea.value = "";
+    currentObject = { text: "" };
+  }
+});
