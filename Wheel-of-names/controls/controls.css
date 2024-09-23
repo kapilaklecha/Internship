@@ -198,9 +198,7 @@ background-color: #3369e8db;
 
 
 
-.controls-wrapper {
-    display: none;
-}
+
 
 .display-results {
     font-size: 14px;
@@ -213,7 +211,30 @@ background-color: #3369e8db;
    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
-.results-wrapper {
+#results-wrapper {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     padding: 10px;
+    display: none;
+    
+}
+
+.main-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#wheel-iframe {
+    width: 50vw;
+    height: 100vh
+}
+
+.controls-parent {
+    width: 50vw;
+   
+
+    /* this is for layout purpose to be remove later. */
+
+    border: 1px solid black;
+    
 }

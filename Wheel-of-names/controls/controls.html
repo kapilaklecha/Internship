@@ -9,84 +9,89 @@
 </head>
 
 <body>
-    <div class="controls-parent">
-        <header class="controls-header">
-            <div class="controls-h-left">
-                <button class="controls-h-l-btn">
-                    Entries
-                </button>
-                <button class="controls-h-l-btn">
-                    Results
-                </button>
-            </div>
-
-            <div class="controls-h-hide">
-                <label for="hide">
-                    <input type="checkbox" name="hide">
-                    Hide
-                </label>
-
-            </div>
-        </header>
-
-        <div class="controls-wrapper">
-            <div class="sub-header">
-                <button class="sub-h-btn">Shuffle</button><button class="sub-h-btn">
-                    Short
-                </button><button class="sub-h-btn">Add image</button>
-                <label for="advance">
-                    <input type="checkbox" name="advance" id="advance">
-                    Advance
-                </label>
-
-            </div>
-            <div class="controls-basic">
-
-
-                <textarea name="entries" id="entries-panel"></textarea>
-            </div>
-
-            <div class="controls-advance">
-                <div class="controls-a-card">
-                    <div class="controls-a-card-main">
-                        <label for="entrie-name">
-                            <input type="text" name="entry-name" id="entry-name">
-                        </label>
-                        <div class="controls-a-card-sub-1">
-                            <div class="entry-color-wrapper">
-                                <label for="entry-color">
-                                    <input type="color" name="entry-color" id="entry-color">
-                                </label>
-                            </div>
-                            <button>img</button>
-                        </div>
-
-                    </div>
-                    <div class="controls-a-card-sub-2">
-                        <button class="close">&#215;</button>
-                        <label for="check-hide">
-                            <input type="checkbox" name="check-hide" id="check-hide">
-                        </label>
-                        <button id="open-advance">&#9881;</button>
-                    </div>
+    <div class="main-page">
+        <iframe src="../wheel/wheel.html" frameborder="0" id="wheel-iframe"></iframe>
+        <div class="controls-parent">
+            <header class="controls-header">
+                <div class="controls-h-left">
+                    <button class="controls-h-l-btn" id="entries-btn">
+                        Entries
+                    </button>
+                    <button class="controls-h-l-btn" id="results-btn">
+                        Results
+                    </button>
                 </div>
 
-                <button id="add-entry">Add entry</button>
-            </div>
+                <div class="controls-h-hide">
+                    <label for="hide">
+                        <input type="checkbox" name="hide">
+                        Hide
+                    </label>
 
-        </div>
-        <div class="results-wrapper">
-            <div class="sub-header">
-                <button class="sub-h-btn">
-                    Short
-                </button><button class="sub-h-btn">Clear the list</button>
+                </div>
+            </header>
+
+            <div id="controls-wrapper">
+                <div class="sub-header">
+                    <button class="sub-h-btn">Shuffle</button><button class="sub-h-btn">
+                        Short
+                    </button><button class="sub-h-btn">Add image</button>
+                    <label for="advance">
+                        <input type="checkbox" name="advance" id="advance">
+                        Advance
+                    </label>
+
+                </div>
+                <div class="controls-basic">
+
+
+                    <textarea name="entries" id="entries-panel"></textarea>
+                </div>
+
+                <div class="controls-advance">
+                    <div class="controls-a-card">
+                        <div class="controls-a-card-main">
+                            <label for="entrie-name">
+                                <input type="text" name="entry-name" id="entry-name">
+                            </label>
+                            <div class="controls-a-card-sub-1">
+                                <div class="entry-color-wrapper">
+                                    <label for="entry-color">
+                                        <input type="color" name="entry-color" id="entry-color">
+                                    </label>
+                                </div>
+                                <button>img</button>
+                            </div>
+
+                        </div>
+                        <div class="controls-a-card-sub-2">
+                            <button class="close">&#215;</button>
+                            <label for="check-hide">
+                                <input type="checkbox" name="check-hide" id="check-hide">
+                            </label>
+                            <button id="open-advance">&#9881;</button>
+                        </div>
+                    </div>
+
+                    <button id="add-entry">Add entry</button>
+                </div>
+
             </div>
-            <div class="display-results">
-                hello
+            <div id="results-wrapper">
+                <div class="sub-header">
+                    <button class="sub-h-btn">
+                        Short
+                    </button><button class="sub-h-btn">Clear the list</button>
+                </div>
+                <div class="display-results">
+                    hello
+                </div>
             </div>
         </div>
     </div>
+    <script type="module" src="./controls.js">
 
+    </script>
 </body>
 
 </html>
