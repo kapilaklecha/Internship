@@ -80,7 +80,6 @@ function startSpin() {
 }
 
 function declareWinner() {
-  console.log(results);
   const anglePerSegment = (2 * Math.PI) / users.length;
   const finalAngle = rotation % (2 * Math.PI);
   const winningIndex = Math.floor(
