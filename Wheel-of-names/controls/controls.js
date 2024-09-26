@@ -14,6 +14,14 @@ const results = document.querySelector(".display-results");
 const sortBtn = document.querySelector("#sortBtn");
 const sortBtnEnt = document.querySelector("#sortBtnEnt");
 const shuffleBtn = document.querySelector("#shuffleBtn");
+const advanceCard = document.querySelector(".controls-advance");
+const advanceBtn = document.querySelector("#advance");
+const controlsBasic = document.querySelector(".controls-basic");
+const addEntry = document.querySelector("#add-entry");
+const controlsAdvCard = document.querySelector(".controls-a-card");
+const advanceCardHold = document.querySelector(".advance-card-hold");
+const popClose = document.querySelector(".close");
+const popup = document.querySelector(".popup-parent");
 
 textArea.addEventListener("input", () => {
   let textVal = textArea.value;
@@ -45,6 +53,19 @@ function hideShow() {
 }
 
 hideBtn.addEventListener("click", hideShow);
+
+function hideShowAdv() {
+  if (advanceBtn.checked) {
+    advanceCard.style.display = "block";
+    controlsBasic.style.display = "none";
+  }
+  if (!advanceBtn.checked) {
+    advanceCard.style.display = "none";
+    controlsBasic.style.display = "block";
+  }
+}
+
+advanceBtn.addEventListener("click", hideShowAdv);
 
 function updateNames() {
   const textInput = textArea.value.trim();
@@ -116,3 +137,10 @@ function shuffle(arr) {
 }
 
 shuffleBtn.addEventListener("click", () => shuffle(textArea));
+
+function addEntryCard() {
+  let child = controlsAdvCard.cloneNode(true);
+  advanceCardHold.append(child);
+}
+
+addEntry.addEventListener("click", addEntryCard);
