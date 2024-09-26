@@ -10,6 +10,7 @@
     box-sizing: border-box;
 }
 
+
 button {
     background-color: transparent;
     cursor: pointer;
@@ -98,11 +99,6 @@ button:hover {
     padding: 10px;
     height: 100%;
 }
-
-
-
-
-
 
 #entry-color {
     opacity: 0;
@@ -242,25 +238,18 @@ background-color: #3369e8db;
 }
 
 #wheel-iframe {
-    margin-left: 20px;
-    width: 50vw;
+    width: 100vw;
     height: 100vh;
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
 }
 
 
 .controls-parent {
     height: 100vh;
-   
      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-   
-   
-
-    /* this is for layout purpose to be remove later. */
-
-    
 }
 
 
@@ -291,7 +280,8 @@ right: 0;
 
 .winner-parent {
     font-family: sans-serif;
-    max-width: 600px;
+    width: 400px;
+    margin: 0 20px;
     max-height: 600px;
     border: 1px solid var(--border-c);
     background-color: white;
@@ -383,6 +373,10 @@ cursor: pointer;
      #wheelCanvas {
         width: 200px;
         height: 200px;
+     }
+
+     .display-results {
+        width: 100%;
      }
 
     .main-page {
