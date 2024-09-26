@@ -1,18 +1,12 @@
-import { user } from "../store.js";
+import { users } from "../store.js";
+import { resultsArr } from "../store.js";
 
 const canvas = document.getElementById("wheelCanvas");
 const ctx = canvas.getContext("2d");
-const basicEntries = document.querySelector("#entries-panel");
+const results = document.querySelector(".display-results");
 
-// Array of entries
-const entries = ["ram", "syam", "tom"];
+// Variables for the wheel
 
-const wheelRadius = canvas.width / 2;
-const centerX = canvas.width / 2;
-const centerY = canvas.height / 2;
-const numberOfEntries = user.length;
-const anglePerEntry = (2 * Math.PI) / numberOfEntries;
-// testing colors
 const colors = [
   "#FF6347",
   "#FFD700",
@@ -21,40 +15,43 @@ const colors = [
   "#FF69B4",
   "#9370DB",
 ];
-
 let rotation = 0;
 let isSpinning = false;
 let spinSpeed = 0;
+const winnerDisplay = document.createElement("div");
 
 // Function to draw the wheel
-function drawWheel(rotate) {
-  for (let i = 0; i < numberOfEntries; i++) {
-    let { text, color } = user[i];
-    const startAngle = i * anglePerEntry + rotate;
-    const endAngle = startAngle + anglePerEntry;
+export function drawWheel() {
+  const radius = canvas.width / 2;
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  if (users.length === 0) return;
+
+  const anglePerSegment = (2 * Math.PI) / users.length;
+
+  for (let i = 0; i < users.length; i++) {
+    const startAngle = i * anglePerSegment + rotation;
+    const endAngle = startAngle + anglePerSegment;
 
     ctx.fillStyle = colors[i % colors.length];
-
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
-    ctx.arc(centerX, centerY, wheelRadius, startAngle, endAngle);
+    ctx.arc(centerX, centerY, radius, startAngle, endAngle);
     ctx.lineTo(centerX, centerY);
     ctx.fill();
     ctx.strokeStyle = "#000";
     ctx.stroke();
 
-    const textAngle = startAngle + anglePerEntry / 2;
-    const textX = centerX + (wheelRadius / 2) * Math.cos(textAngle);
-    const textY = centerY + (wheelRadius / 2) * Math.sin(textAngle);
-
     ctx.save();
-    ctx.translate(textX, textY);
-    ctx.rotate(textAngle + Math.PI / 2);
-    ctx.fillStyle = "#000";
-    ctx.font = "16px sans-serif";
+    ctx.translate(centerX, centerY);
+    ctx.rotate(startAngle + anglePerSegment / 2);
     ctx.textAlign = "center";
-
-    ctx.fillText(text, 0, 0);
+    ctx.fillStyle = "#000";
+    ctx.font = "16px Arial";
+    ctx.fillText(users[i]["text"], radius / 1.5, 0);
     ctx.restore();
   }
 }
@@ -63,24 +60,42 @@ function spinWheel() {
   if (!isSpinning) return;
   rotation += spinSpeed;
   spinSpeed *= 0.98;
-  if (spinSpeed < 0.001) {
+
+  if (spinSpeed < 0.01) {
     isSpinning = false;
     spinSpeed = 0;
-    rotation = 0;
+    declareWinner();
     return;
   }
-  drawWheel(rotation);
+
+  drawWheel();
   requestAnimationFrame(spinWheel);
 }
 
-function startSpinning() {
-  console.log();
-  if (isSpinning) return;
+function startSpin() {
+  if (isSpinning || users.length === 0) return;
   isSpinning = true;
-  spinSpeed = Math.random() * 2;
+  spinSpeed = Math.random() * 0.2;
   spinWheel();
 }
 
-canvas.addEventListener("click", startSpinning);
+function declareWinner() {
+  console.log(results);
+  const anglePerSegment = (2 * Math.PI) / users.length;
+  const finalAngle = rotation % (2 * Math.PI);
+  const winningIndex = Math.floor(
+    (users.length - finalAngle / anglePerSegment) % users.length
+  );
+  const winnerName = users[winningIndex]["text"];
 
-drawWheel(rotation);
+  resultsArr.push(winnerName);
+  let val = resultsArr[resultsArr.length - 1];
+
+  let child = document.createElement("div");
+  child.innerText = val;
+  results.append(child);
+}
+
+canvas.addEventListener("click", startSpin);
+
+drawWheel();
