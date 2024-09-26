@@ -323,20 +323,20 @@ cursor: pointer;
     padding:  10px;
 }
 
-.close-modal {
+#close-modal {
     background-color: transparent;
 
 }
-.close-modal:hover {
+#close-modal:hover {
     background-color: var(--border-c);
 }
 
-.remove-modal {
+#remove-modal {
     color: white;
     background-color: var(--icon-c);
 }
 
-.remove-modal:hover {
+#remove-modal:hover {
     background-color: var(--btn-hover);
 
 }
