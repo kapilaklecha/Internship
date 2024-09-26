@@ -4,6 +4,9 @@ import { resultsArr } from "../store.js";
 const canvas = document.getElementById("wheelCanvas");
 const ctx = canvas.getContext("2d");
 const results = document.querySelector(".display-results");
+const winnerPopupName = document.querySelector(".winner-name");
+const popup = document.querySelector(".popup-parent");
+const popClose = document.querySelector("#close-pop");
 
 // Variables for the wheel
 
@@ -90,7 +93,8 @@ function declareWinner() {
     (users.length - finalAngle / anglePerSegment) % users.length
   );
   const winnerName = users[winningIndex]["text"];
-
+  winnerPopupName.innerText = winnerName;
+  popup.style.display = "block";
   resultsArr.push(winnerName);
   let val = resultsArr[resultsArr.length - 1];
 
@@ -102,3 +106,9 @@ function declareWinner() {
 canvas.addEventListener("click", startSpin);
 
 drawWheel();
+
+function closePopup() {
+  popup.style.display = "none";
+}
+
+popClose.addEventListener("click", closePopup);

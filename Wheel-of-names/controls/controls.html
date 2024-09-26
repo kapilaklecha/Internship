@@ -10,84 +10,106 @@
 
 <body>
     <div class="main-page">
-        <div id="wheel-iframe"><canvas id="wheelCanvas" width="400" height="400"></canvas></div>
-        <div id="controls-h-hide">
-            <label for="hide">
-                <input type="checkbox" name="hide" id="hide-btn" value="hide">
-                Hide
-            </label>
-
+        <div id="wheel-iframe"><canvas id="wheelCanvas" width="500" height="500"></canvas>
+            <div class="triangle"></div>
         </div>
-        <div class="controls-parent">
+        <div class="controls">
+            <div id="controls-h-hide">
+                <label for="hide">
+                    <input type="checkbox" name="hide" id="hide-btn" value="hide">
+                    Hide
+                </label>
 
-            <header class="controls-header">
-                <div class="controls-h-left">
-                    <button class="controls-h-l-btn" id="entries-btn">
-                        Entries
-                    </button>
-                    <button class="controls-h-l-btn" id="results-btn">
-                        Results
-                    </button>
-                </div>
+            </div>
+            <div class="controls-parent">
 
-
-            </header>
-            <div id="controls-board">
-                <div id="controls-wrapper">
-                    <div class="sub-header">
-                        <button class="sub-h-btn" id="shuffleBtn">Shuffle</button><button class="sub-h-btn"
-                            id="sortBtnEnt">
-                            Short
-                        </button><button class="sub-h-btn">Add image</button>
-                        <label for="advance">
-                            <input type="checkbox" name="advance" id="advance">
-                            Advance
-                        </label>
-
-                    </div>
-                    <div class="controls-basic">
-
-                        <form action="">
-                            <textarea name="entries" id="entries-panel"></textarea>
-                        </form>
+                <header class="controls-header">
+                    <div class="controls-h-left">
+                        <button class="controls-h-l-btn" id="entries-btn">
+                            Entries
+                        </button>
+                        <button class="controls-h-l-btn" id="results-btn">
+                            Results
+                        </button>
                     </div>
 
-                    <div class="controls-advance">
-                        <div class="controls-a-card">
-                            <div class="controls-a-card-main">
-                                <label for="entrie-name">
-                                    <input type="text" name="entry-name" id="entry-name">
-                                </label>
-                                <div class="controls-a-card-sub-1">
-                                    <div class="entry-color-wrapper">
-                                        <label for="entry-color">
-                                            <input type="color" name="entry-color" id="entry-color">
-                                        </label>
-                                    </div>
-                                    <button>img</button>
-                                </div>
 
-                            </div>
-                            <div class="controls-a-card-sub-2">
-                                <button class="close">&#215;</button>
-                                <label for="check-hide">
-                                    <input type="checkbox" name="check-hide" id="check-hide">
-                                </label>
-                                <button id="open-advance">&#9881;</button>
-                            </div>
+                </header>
+                <div id="controls-board">
+                    <div id="controls-wrapper">
+                        <div class="sub-header">
+                            <button class="sub-h-btn" id="shuffleBtn">Shuffle</button><button class="sub-h-btn"
+                                id="sortBtnEnt">
+                                Short
+                            </button><button class="sub-h-btn">Add image</button>
+                            <label for="advance">
+                                <input type="checkbox" name="advance" id="advance">
+                                Advance
+                            </label>
+
+                        </div>
+                        <div class="controls-basic">
+
+                            <form action="">
+                                <textarea name="entries" id="entries-panel"></textarea>
+                            </form>
                         </div>
 
-                        <button id="add-entry">Add entry</button>
-                    </div>
+                        <div class="controls-advance">
+                            <div class="advance-card-hold">
+                                <div class="controls-a-card">
+                                    <div class="controls-a-card-main">
+                                        <label for="entrie-name">
+                                            <input type="text" name="entry-name" id="entry-name">
+                                        </label>
+                                        <div class="controls-a-card-sub-1">
+                                            <div class="entry-color-wrapper">
+                                                <label for="entry-color">
+                                                    <input type="color" name="entry-color" id="entry-color">
+                                                </label>
+                                            </div>
+                                            <button>img</button>
+                                        </div>
 
-                </div>
-                <div id="results-wrapper">
-                    <div class="sub-header">
-                        <button class="sub-h-btn" id="sortBtn">
-                            Sort
-                        </button><button class="sub-h-btn" id="clear-btn">Clear the list</button>
+                                    </div>
+                                    <div class="controls-a-card-sub-2">
+                                        <button class="close">&#215;</button>
+                                        <label for="check-hide">
+                                            <input type="checkbox" name="check-hide" id="check-hide">
+                                        </label>
+                                        <button id="open-advance">&#9881;</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="add-entry">Add entry</button>
+                        </div>
+
                     </div>
-                    <div class="display-results">
+                    <div id="results-wrapper">
+                        <div class="sub-header">
+                            <button class="sub-h-btn" id="sortBtn">
+                                Sort
+                            </button><button class="sub-h-btn" id="clear-btn">Clear the list</button>
+                        </div>
+                        <div class="display-results">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="popup-parent">
+            <div class="popup">
+                <div class="winner-parent">
+                    <div class="greet">
+                        We have a winner!
+                        <button class="close" id="close-pop">&#x2715;</button>
+                    </div>
+                    <div class="winner-name">
+
+                    </div>
+                    <div class="btns">
+                        <button class="close-modal">Close</button>
+                        <button class="remove-modal">Remove</button>
                     </div>
                 </div>
             </div>
