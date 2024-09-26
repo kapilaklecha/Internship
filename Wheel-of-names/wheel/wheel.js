@@ -28,7 +28,11 @@ export function drawWheel() {
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  if (users.length === 0) return;
+  if (users.length === 0) {
+    ctx.beginPath();
+    ctx.arc(centerX, centerX, radius, 0, 2 * Math.PI);
+    ctx.stroke();
+  }
 
   const anglePerSegment = (2 * Math.PI) / users.length;
 
@@ -42,7 +46,7 @@ export function drawWheel() {
     ctx.arc(centerX, centerY, radius, startAngle, endAngle);
     ctx.lineTo(centerX, centerY);
     ctx.fill();
-    ctx.strokeStyle = "#000";
+    ctx.strokeStyle = "FFFFFF";
     ctx.stroke();
 
     ctx.save();
