@@ -12,6 +12,7 @@ const headerLeftC = document.querySelector(".controls-h-left");
 const clearBtn = document.querySelector("#clear-btn");
 const results = document.querySelector(".display-results");
 const sortBtn = document.querySelector("#sortBtn");
+const sortBtnEnt = document.querySelector("#sortBtnEnt");
 
 textArea.addEventListener("input", () => {
   let textVal = textArea.value;
@@ -63,6 +64,7 @@ function updateNames() {
 textArea.addEventListener("input", updateNames);
 
 function clearResultsList() {
+  console.log(textArea.value);
   results.innerHTML = "";
   resultsArr.length = 0;
 }
@@ -70,8 +72,12 @@ function clearResultsList() {
 clearBtn.addEventListener("click", clearResultsList);
 
 function shortList(arr) {
-  let sortedArr = arr.sort();
-  return sortedArr;
+  if (arr.name == "entries") {
+    arr.value = arr.value.split("\n").sort().join("\n");
+  } else {
+    let sortedArr = arr.sort();
+    return sortedArr;
+  }
 }
 
 function updateSortedList(arr) {
@@ -87,3 +93,4 @@ function updateSortedList(arr) {
 }
 
 sortBtn.addEventListener("click", () => updateSortedList(resultsArr));
+sortBtnEnt.addEventListener("click", () => shortList(textArea));
