@@ -1,4 +1,4 @@
-import { users } from "../store.js";
+import { resultsArr, users } from "../store.js";
 import { drawWheel } from "../wheel/wheel.js";
 
 const textArea = document.querySelector("#entries-panel");
@@ -9,6 +9,9 @@ const entriesTab = document.querySelector("#controls-wrapper");
 const hideBtn = document.querySelector("#hide-btn");
 const controlParent = document.querySelector("#controls-board");
 const headerLeftC = document.querySelector(".controls-h-left");
+const clearBtn = document.querySelector("#clear-btn");
+const results = document.querySelector(".display-results");
+const sortBtn = document.querySelector("#sortBtn");
 
 textArea.addEventListener("input", () => {
   let textVal = textArea.value;
@@ -17,7 +20,6 @@ textArea.addEventListener("input", () => {
 function showTabEntries() {
   entriesTab.style.display = "block";
   resultsTab.style.display = "none";
-  console.log(hideBtn.checked);
 }
 
 function showTabResults() {
@@ -54,9 +56,15 @@ function updateNames() {
       color: "",
     });
   });
-  console.log(users);
 
   drawWheel();
 }
 
 textArea.addEventListener("input", updateNames);
+
+function clearResultsList() {
+  results.innerHTML = "";
+  resultsArr.length = 0;
+}
+
+clearBtn.addEventListener("click", clearResultsList);
