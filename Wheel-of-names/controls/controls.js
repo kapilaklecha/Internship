@@ -13,6 +13,7 @@ const clearBtn = document.querySelector("#clear-btn");
 const results = document.querySelector(".display-results");
 const sortBtn = document.querySelector("#sortBtn");
 const sortBtnEnt = document.querySelector("#sortBtnEnt");
+const shuffleBtn = document.querySelector("#shuffleBtn");
 
 textArea.addEventListener("input", () => {
   let textVal = textArea.value;
@@ -64,7 +65,7 @@ function updateNames() {
 textArea.addEventListener("input", updateNames);
 
 function clearResultsList() {
-  console.log(textArea.value);
+  console.log(shuffleBtn);
   results.innerHTML = "";
   resultsArr.length = 0;
 }
@@ -94,3 +95,24 @@ function updateSortedList(arr) {
 
 sortBtn.addEventListener("click", () => updateSortedList(resultsArr));
 sortBtnEnt.addEventListener("click", () => shortList(textArea));
+
+function shuffle(arr) {
+  if (arr.name == "entries") {
+    let array = arr.value.split("\n");
+
+    let currentIndex = array.length;
+
+    while (currentIndex != 0) {
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex],
+        array[currentIndex],
+      ];
+    }
+    arr.value = array.join("\n");
+  }
+}
+
+shuffleBtn.addEventListener("click", () => shuffle(textArea));
