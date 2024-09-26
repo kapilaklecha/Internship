@@ -44,6 +44,7 @@ export function drawWheel() {
     const endAngle = startAngle + anglePerSegment;
 
     ctx.fillStyle = colors[i % colors.length];
+    users[i]["color"] = colors[i % colors.length];
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.arc(centerX, centerY, radius, startAngle, endAngle);
@@ -84,6 +85,7 @@ function startSpin() {
   isSpinning = true;
   spinSpeed = Math.random() * 0.2;
   spinWheel();
+  console.log(users);
 }
 
 function declareWinner() {
