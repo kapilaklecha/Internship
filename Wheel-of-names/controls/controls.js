@@ -20,12 +20,7 @@ const controlsBasic = document.querySelector(".controls-basic");
 const addEntry = document.querySelector("#add-entry");
 const controlsAdvCard = document.querySelector(".controls-a-card");
 const advanceCardHold = document.querySelector(".advance-card-hold");
-const popClose = document.querySelector(".close");
-const popup = document.querySelector(".popup-parent");
-
-textArea.addEventListener("input", () => {
-  let textVal = textArea.value;
-});
+const controlsParentP = document.querySelector(".controls-parent");
 
 function showTabEntries() {
   entriesTab.style.display = "block";
@@ -44,6 +39,8 @@ function hideShow() {
   if (hideBtn.checked) {
     controlParent.style.display = "none";
     headerLeftC.style.display = "none";
+
+    controlsParentP.style.boxShadow = "none";
   }
 
   if (!hideBtn.checked) {
