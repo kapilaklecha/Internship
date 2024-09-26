@@ -7,6 +7,7 @@ const results = document.querySelector(".display-results");
 const winnerPopupName = document.querySelector(".winner-name");
 const popup = document.querySelector(".popup-parent");
 const popClose = document.querySelector("#close-pop");
+const popCloseBtn = document.querySelector("#close-modal");
 
 // Variables for the wheel
 
@@ -114,3 +115,4 @@ function closePopup() {
 }
 
 popClose.addEventListener("click", closePopup);
+popCloseBtn.addEventListener("click", closePopup);
