@@ -1,4 +1,4 @@
-import { resultsArr, users } from "../store.js";
+import { resultsArr, setEntry, users } from "../store.js";
 import { drawWheel } from "../wheel/wheel.js";
 
 const textArea = document.querySelector("#entries-panel");
@@ -68,3 +68,22 @@ function clearResultsList() {
 }
 
 clearBtn.addEventListener("click", clearResultsList);
+
+function shortList(arr) {
+  let sortedArr = arr.sort();
+  return sortedArr;
+}
+
+function updateSortedList(arr) {
+  if (arr.length == 0) return;
+  let sortedList = shortList(arr);
+  setEntry(sortedList);
+  results.innerHTML = "";
+  resultsArr.forEach((val) => {
+    let child = document.createElement("div");
+    child.innerText = val;
+    results.append(child);
+  });
+}
+
+sortBtn.addEventListener("click", () => updateSortedList(resultsArr));
