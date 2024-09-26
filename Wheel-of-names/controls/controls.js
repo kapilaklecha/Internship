@@ -1,4 +1,5 @@
-import { user } from "../store.js";
+import { users } from "../store.js";
+import { drawWheel } from "../wheel/wheel.js";
 
 const textArea = document.querySelector("#entries-panel");
 const entriesTabBtn = document.querySelector("#entries-btn");
@@ -41,20 +42,21 @@ function hideShow() {
 
 hideBtn.addEventListener("click", hideShow);
 
-let currentObject = { text: "" };
+function updateNames() {
+  const textInput = textArea.value.trim();
+  const nameList = textInput.split("\n").filter((name) => name.trim() !== "");
 
-textArea.addEventListener("input", function () {
-  currentObject.text = textArea.value;
-  console.log(currentObject);
-});
+  users.length = 0;
+  nameList.forEach((name, index) => {
+    users.push({
+      id: index + 1,
+      text: name.trim(),
+      color: "",
+    });
+  });
+  console.log(users);
 
-textArea.addEventListener("keydown", function (event) {
-  if (event.key === "Enter") {
-    event.preventDefault();
+  drawWheel();
+}
 
-    user.push({ ...currentObject });
-
-    textArea.value = "";
-    currentObject = { text: "" };
-  }
-});
+textArea.addEventListener("input", updateNames);
