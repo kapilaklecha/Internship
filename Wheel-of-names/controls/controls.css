@@ -235,9 +235,13 @@ background-color: #3369e8db;
 }
 
 #wheel-iframe {
+    margin-left: 20px;
     width: 50vw;
-    height: 100vh
+    height: 100vh;
+    display: flex;
+    align-items: center;
 }
+
 
 .controls-parent {
     height: 100vh;

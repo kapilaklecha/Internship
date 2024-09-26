@@ -10,7 +10,7 @@
 
 <body>
     <div class="main-page">
-        <iframe src="../wheel/wheel.html" frameborder="0" id="wheel-iframe"></iframe>
+        <div id="wheel-iframe"><canvas id="wheelCanvas" width="400" height="400"></canvas></div>
         <div id="controls-h-hide">
             <label for="hide">
                 <input type="checkbox" name="hide" id="hide-btn" value="hide">
@@ -87,15 +87,16 @@
                         </button><button class="sub-h-btn">Clear the list</button>
                     </div>
                     <div class="display-results">
-                        hello
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script type="module" src="./controls.js">
+    <script type="module" src="./controls.js" defer>
 
     </script>
+    <script type="module" src="../wheel/wheel.js" defer></script>
+
 </body>
 
 </html>
