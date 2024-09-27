@@ -59,7 +59,7 @@ export function drawWheel() {
     ctx.rotate(startAngle + anglePerSegment / 2);
     ctx.textAlign = "center";
     ctx.fillStyle = "#000";
-    ctx.font = "16px Arial";
+    ctx.font = "24px Arial";
     ctx.fillText(users[i]["text"], radius / 1.5, 0);
     ctx.restore();
   }
