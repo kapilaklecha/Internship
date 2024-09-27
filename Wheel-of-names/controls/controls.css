@@ -85,6 +85,10 @@ button:hover {
     margin:  5px;
 }
 
+.sub-h-btn:hover {
+background-color: gray;
+}
+
 #entries-panel {
     font-size: 18px;
     border-radius: 5px;
