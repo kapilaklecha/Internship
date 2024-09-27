@@ -53,8 +53,6 @@ export function drawWheel() {
     ctx.arc(centerX, centerY, radius, startAngle, endAngle);
     ctx.lineTo(centerX, centerY);
     ctx.fill();
-    ctx.strokeStyle = "FFFFFF";
-    ctx.stroke();
 
     ctx.save();
     ctx.translate(centerX, centerY);
