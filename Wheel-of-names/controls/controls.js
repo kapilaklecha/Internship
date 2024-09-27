@@ -1,4 +1,4 @@
-import { resultsArr, setEntry, users } from "../store.js";
+import { resultsArr, setContent, setEntry, users } from "../store.js";
 import { drawWheel } from "../wheel/wheel.js";
 
 const textArea = document.querySelector("#entries-panel");
@@ -21,8 +21,10 @@ const addEntry = document.querySelector("#add-entry");
 const controlsAdvCard = document.querySelector(".controls-a-card");
 const advanceCardHold = document.querySelector(".advance-card-hold");
 const controlsParentP = document.querySelector(".controls-parent");
+const file = document.querySelector("#file");
 // This function is to show Entries tab.
 function showTabEntries() {
+  console.log(fileContent);
   entriesTab.style.display = "block";
   resultsTab.style.display = "none";
   entriesTabBtn.style.borderBottom = "2px solid black";
@@ -162,3 +164,23 @@ function addEntryCard() {
 }
 
 addEntry.addEventListener("click", addEntryCard);
+
+function fileRead(event) {
+  const file = event.target.files[0];
+  const reader = new FileReader();
+
+  reader.onload = function (e) {
+    let content = e.target.result;
+    let jsonfile = JSON.parse(content);
+
+    setContent(jsonfile);
+
+    drawWheel();
+  };
+
+  if (file) {
+    reader.readAsText(file);
+  }
+}
+
+file.addEventListener("change", fileRead);
