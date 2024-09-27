@@ -362,6 +362,10 @@ cursor: pointer;
     background-color: var(--btn-hover);
 }
 
+#close-pop {
+    background-color: transparent;
+}
+
 .popup {
     z-index: 100;
     position: fixed;
@@ -433,4 +437,8 @@ cursor: pointer;
     position: relative;
     right: 29px;
     }
+  }
+
+  #file {
+    display: none;
   }
