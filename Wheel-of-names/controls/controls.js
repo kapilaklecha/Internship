@@ -24,7 +24,6 @@ const controlsParentP = document.querySelector(".controls-parent");
 const file = document.querySelector("#file");
 // This function is to show Entries tab.
 function showTabEntries() {
-  console.log(fileContent);
   entriesTab.style.display = "block";
   resultsTab.style.display = "none";
   entriesTabBtn.style.borderBottom = "2px solid black";
@@ -172,7 +171,6 @@ function fileRead(event) {
   reader.onload = function (e) {
     let content = e.target.result;
     let jsonfile = JSON.parse(content);
-
     setContent(jsonfile);
 
     drawWheel();
