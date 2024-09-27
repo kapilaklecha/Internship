@@ -9,6 +9,7 @@ const popup = document.querySelector(".popup-parent");
 const popClose = document.querySelector("#close-pop");
 const popCloseBtn = document.querySelector("#close-modal");
 const greet = document.querySelector(".greet");
+const removeBtn = document.querySelector("#remove-modal");
 
 // Variables for the wheel
 
@@ -105,6 +106,7 @@ function declareWinner() {
   // Updating the popup.
   winnerPopupName.innerText = winnerName;
   greet.style.backgroundColor = winnerColor;
+  removeBtn.style.backgroundColor = winnerColor;
   popup.style.display = "block";
 
   resultsArr.push(winnerName);
