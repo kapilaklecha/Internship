@@ -34,8 +34,10 @@ export function drawWheel() {
 
   if (users.length === 0) {
     ctx.beginPath();
-    ctx.arc(centerX, centerX, radius, 0, 2 * Math.PI);
-    ctx.stroke();
+    ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+    ctx.fillStyle = "rgb(225, 225, 225)";
+    ctx.fill();
+    return;
   }
 
   const anglePerSegment = (2 * Math.PI) / users.length;
