@@ -25,11 +25,15 @@ const controlsParentP = document.querySelector(".controls-parent");
 function showTabEntries() {
   entriesTab.style.display = "block";
   resultsTab.style.display = "none";
+  entriesTabBtn.style.borderBottom = "2px solid black";
+  resultsTabBtn.style.borderBottom = "none";
 }
 
 function showTabResults() {
   entriesTab.style.display = "none";
   resultsTab.style.display = "block";
+  resultsTabBtn.style.borderBottom = "2px solid black";
+  entriesTabBtn.style.borderBottom = "none";
 }
 
 entriesTabBtn.addEventListener("click", showTabEntries);
