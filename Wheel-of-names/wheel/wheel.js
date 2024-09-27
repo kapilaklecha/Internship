@@ -11,18 +11,17 @@ const popCloseBtn = document.querySelector("#close-modal");
 
 // Variables for the wheel
 
-const colors = [
-  "#FF6347",
-  "#FFD700",
-  "#90EE90",
-  "#87CEFA",
-  "#FF69B4",
-  "#9370DB",
-];
+// const colors = [
+//   "#FF6347",
+//   "#FFD700",
+//   "#90EE90",
+//   "#87CEFA",
+//   "#FF69B4",
+//   "#9370DB",
+// ];
 let rotation = 0;
 let isSpinning = false;
 let spinSpeed = 0;
-const winnerDisplay = document.createElement("div");
 
 // Function to draw the wheel
 export function drawWheel() {
@@ -46,8 +45,8 @@ export function drawWheel() {
     const startAngle = i * anglePerSegment + rotation;
     const endAngle = startAngle + anglePerSegment;
 
-    ctx.fillStyle = colors[i % colors.length];
-    users[i]["color"] = colors[i % colors.length];
+    ctx.fillStyle = users[i]["color"];
+    // users[i]["color"] = colors[i % colors.length];
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.arc(centerX, centerY, radius, startAngle, endAngle);

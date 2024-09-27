@@ -68,6 +68,15 @@ function hideShowAdv() {
 
 advanceBtn.addEventListener("click", hideShowAdv);
 
+const colors = [
+  "#FF6347",
+  "#FFD700",
+  "#90EE90",
+  "#87CEFA",
+  "#FF69B4",
+  "#9370DB",
+];
+
 function updateNames() {
   const textInput = textArea.value.trim();
   const nameList = textInput.split("\n").filter((name) => name.trim() !== "");
@@ -77,7 +86,7 @@ function updateNames() {
     users.push({
       id: index + 1,
       text: name.trim(),
-      color: "",
+      color: colors[index % colors.length],
     });
   });
 
