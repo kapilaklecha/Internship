@@ -21,7 +21,7 @@ const addEntry = document.querySelector("#add-entry");
 const controlsAdvCard = document.querySelector(".controls-a-card");
 const advanceCardHold = document.querySelector(".advance-card-hold");
 const controlsParentP = document.querySelector(".controls-parent");
-
+// This function is to show Entries tab.
 function showTabEntries() {
   entriesTab.style.display = "block";
   resultsTab.style.display = "none";
@@ -29,6 +29,7 @@ function showTabEntries() {
   resultsTabBtn.style.borderBottom = "none";
 }
 
+// This function is to show Result tab.
 function showTabResults() {
   entriesTab.style.display = "none";
   resultsTab.style.display = "block";
@@ -39,6 +40,7 @@ function showTabResults() {
 entriesTabBtn.addEventListener("click", showTabEntries);
 resultsTabBtn.addEventListener("click", showTabResults);
 
+// function to hide and show the entire controls panel.
 function hideShow() {
   if (hideBtn.checked) {
     controlParent.style.display = "none";
@@ -54,7 +56,7 @@ function hideShow() {
 }
 
 hideBtn.addEventListener("click", hideShow);
-
+// This function is to show the advance tab which is currently disabled.
 function hideShowAdv() {
   if (advanceBtn.checked) {
     advanceCard.style.display = "block";
@@ -76,7 +78,9 @@ const colors = [
   "#FF69B4",
   "#9370DB",
 ];
-
+// This function (updateNames) is updating the json.
+// Json is in the store.js with the name users.
+// Json is updated dynamically as user provide input.
 function updateNames() {
   const textInput = textArea.value.trim();
   const nameList = textInput.split("\n").filter((name) => name.trim() !== "");
@@ -86,7 +90,7 @@ function updateNames() {
     users.push({
       id: index + 1,
       text: name.trim(),
-      color: colors[index % colors.length],
+      color: colors[index % colors.length], // Random colors assigned the users (Because not custome color input provided to users).
     });
   });
 
@@ -95,14 +99,15 @@ function updateNames() {
 
 textArea.addEventListener("input", updateNames);
 
+// functions to clear the results tab.
 function clearResultsList() {
-  console.log(shuffleBtn);
   results.innerHTML = "";
   resultsArr.length = 0;
 }
 
 clearBtn.addEventListener("click", clearResultsList);
 
+// functions for shorting the lists
 function shortList(arr) {
   if (arr.name == "entries") {
     arr.value = arr.value.split("\n").sort().join("\n");
@@ -112,6 +117,7 @@ function shortList(arr) {
   }
 }
 
+//function for updating the shorted list to ui.
 function updateSortedList(arr) {
   if (arr.length == 0) return;
   let sortedList = shortList(arr);
@@ -127,6 +133,7 @@ function updateSortedList(arr) {
 sortBtn.addEventListener("click", () => updateSortedList(resultsArr));
 sortBtnEnt.addEventListener("click", () => shortList(textArea));
 
+// function for shuffling the list.
 function shuffle(arr) {
   if (arr.name == "entries") {
     let array = arr.value.split("\n");
@@ -148,6 +155,7 @@ function shuffle(arr) {
 
 shuffleBtn.addEventListener("click", () => shuffle(textArea));
 
+// This function is to add cards in advance mode (which is currently disabled).
 function addEntryCard() {
   let child = controlsAdvCard.cloneNode(true);
   advanceCardHold.append(child);

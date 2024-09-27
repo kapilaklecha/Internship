@@ -64,6 +64,8 @@ export function drawWheel() {
   }
 }
 
+// function to spin the wheel and update it to ui.
+// this function also stop the wheel.
 function spinWheel() {
   if (!isSpinning) return;
   rotation += spinSpeed;
@@ -80,26 +82,31 @@ function spinWheel() {
   requestAnimationFrame(spinWheel);
 }
 
+// fuction to start the spin.
 function startSpin() {
   if (isSpinning || users.length === 0) return;
   isSpinning = true;
-  spinSpeed = Math.random() * 0.2;
+  spinSpeed = Math.random() * 0.2; // spin speed can be controlled form here.
   spinWheel();
-  console.log(users);
 }
 
+// fuction to declare the winner and update to ui.
 function declareWinner() {
+  // Calculate the winner.
   const anglePerSegment = (2 * Math.PI) / users.length;
   const finalAngle = rotation % (2 * Math.PI);
   const winningIndex = Math.floor(
     (users.length - finalAngle / anglePerSegment) % users.length
   );
   const winnerName = users[winningIndex]["text"];
+
+  // Updating the popup.
   winnerPopupName.innerText = winnerName;
   popup.style.display = "block";
   resultsArr.push(winnerName);
-  let val = resultsArr[resultsArr.length - 1];
 
+  // Updating the results tab.
+  let val = resultsArr[resultsArr.length - 1];
   let child = document.createElement("div");
   child.innerText = val;
   results.append(child);
@@ -109,6 +116,7 @@ canvas.addEventListener("click", startSpin);
 
 drawWheel();
 
+// fuction to close the popup.
 function closePopup() {
   popup.style.display = "none";
 }
