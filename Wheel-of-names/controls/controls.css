@@ -66,6 +66,11 @@ button:hover {
     
 }
 
+#hide-btn-label {
+    display: flex;
+    gap: 5px;
+}
+
 .controls-h-l-btn:active{
     border-bottom: 2px solid black;
 }
