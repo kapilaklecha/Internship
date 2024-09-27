@@ -8,6 +8,7 @@ const winnerPopupName = document.querySelector(".winner-name");
 const popup = document.querySelector(".popup-parent");
 const popClose = document.querySelector("#close-pop");
 const popCloseBtn = document.querySelector("#close-modal");
+const greet = document.querySelector(".greet");
 
 // Variables for the wheel
 
@@ -86,7 +87,7 @@ function spinWheel() {
 function startSpin() {
   if (isSpinning || users.length === 0) return;
   isSpinning = true;
-  spinSpeed = Math.random() * 0.2; // spin speed can be controlled form here.
+  spinSpeed = Math.random() * 1; // spin speed can be controlled form here.
   spinWheel();
 }
 
@@ -99,10 +100,13 @@ function declareWinner() {
     (users.length - finalAngle / anglePerSegment) % users.length
   );
   const winnerName = users[winningIndex]["text"];
+  const winnerColor = users[winningIndex]["color"];
 
   // Updating the popup.
   winnerPopupName.innerText = winnerName;
+  greet.style.backgroundColor = winnerColor;
   popup.style.display = "block";
+
   resultsArr.push(winnerName);
 
   // Updating the results tab.
