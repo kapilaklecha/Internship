@@ -108,8 +108,8 @@ function clearResultsList() {
 
 clearBtn.addEventListener("click", clearResultsList);
 
-// functions for shorting the lists
-function shortList(arr) {
+// functions for sorting the lists
+function sortList(arr) {
   if (arr.name == "entries") {
     arr.value = arr.value.split("\n").sort().join("\n");
   } else {
@@ -118,10 +118,10 @@ function shortList(arr) {
   }
 }
 
-//function for updating the shorted list to ui.
+//function for updating the sorted list to ui.
 function updateSortedList(arr) {
   if (arr.length == 0) return;
-  let sortedList = shortList(arr);
+  let sortedList = sortList(arr);
   setEntry(sortedList);
   results.innerHTML = "";
   resultsArr.forEach((val) => {
@@ -132,7 +132,7 @@ function updateSortedList(arr) {
 }
 
 sortBtn.addEventListener("click", () => updateSortedList(resultsArr));
-sortBtnEnt.addEventListener("click", () => shortList(textArea));
+sortBtnEnt.addEventListener("click", () => sortList(textArea));
 
 // function for shuffling the list.
 function shuffle(arr) {
@@ -167,13 +167,16 @@ addEntry.addEventListener("click", addEntryCard);
 function fileRead(event) {
   const file = event.target.files[0];
   const reader = new FileReader();
-
   reader.onload = function (e) {
-    let content = e.target.result;
-    let jsonfile = JSON.parse(content);
-    setContent(jsonfile);
+    try {
+      let content = e.target.result;
+      let jsonfile = JSON.parse(content);
+      setContent(jsonfile);
 
-    drawWheel();
+      drawWheel();
+    } catch (err) {
+      alert("Please provide a valid JSON");
+    }
   };
 
   if (file) {
