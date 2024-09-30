@@ -165,22 +165,27 @@ function addEntryCard() {
 addEntry.addEventListener("click", addEntryCard);
 
 function fileRead(event) {
-  const file = event.target.files[0];
-  const reader = new FileReader();
-  reader.onload = function (e) {
-    try {
-      let content = e.target.result;
-      let jsonfile = JSON.parse(content);
-      setContent(jsonfile);
+  const validFileType = ["application/json", "text/plain"];
+  if (validFileType.includes(event.target.files[0]["type"])) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      try {
+        let content = e.target.result;
+        let jsonfile = JSON.parse(content);
+        setContent(jsonfile);
 
-      drawWheel();
-    } catch (err) {
-      alert("Please provide a valid JSON");
+        drawWheel();
+      } catch (err) {
+        alert("Please provide a valid JSON");
+      }
+    };
+
+    if (file) {
+      reader.readAsText(file);
     }
-  };
-
-  if (file) {
-    reader.readAsText(file);
+  } else {
+    alert("Please provide valid file type application/json or text/plain");
   }
 }
 
