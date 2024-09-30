@@ -44,6 +44,18 @@ export function drawWheel() {
   const anglePerSegment = (2 * Math.PI) / users.length;
 
   for (let i = 0; i < users.length; i++) {
+    if (
+      (users.length > 0 && users[i]["text"] === undefined) ||
+      users[i]["color"] === undefined
+    ) {
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+      ctx.fillStyle = "rgb(225, 225, 225)";
+      ctx.fill();
+      // throw new Error("JSON must have text property and color property");
+      console.log("JSON must have text property and color property");
+      return;
+    }
     const startAngle = i * anglePerSegment + rotation;
     const endAngle = startAngle + anglePerSegment;
 

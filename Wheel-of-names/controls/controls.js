@@ -174,7 +174,6 @@ function fileRead(event) {
         let content = e.target.result;
         let jsonfile = JSON.parse(content);
         setContent(jsonfile);
-
         drawWheel();
       } catch (err) {
         alert("Please provide a valid JSON");
