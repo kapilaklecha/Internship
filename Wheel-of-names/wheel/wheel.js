@@ -28,7 +28,7 @@ let spinSpeed = 0;
 const radius = canvas.width / 2;
 const centerX = canvas.width / 2;
 const centerY = canvas.height / 2;
-
+let areaCircle = Math.PI * Math.pow(radius, 2);
 // Function to draw the wheel
 export function drawWheel() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -76,22 +76,25 @@ export function drawWheel() {
     ctx.translate(centerX, centerY);
     ctx.rotate(startAngle + anglePerSegment / 2);
 
+    // We can add a switch statement to add more cases with different angles and sizes for font in this function
+    let fontSize = validFontSize(anglePerSegment);
+
     ctx.textAlign = "center";
     ctx.fillStyle = "#000";
-    ctx.font = "24px Arial";
+    ctx.font = `${fontSize}px Arial`;
 
     let initText = users[i]["text"];
-    let widthText = ctx.measureText(initText).width;
+    let metrics = ctx.measureText(initText);
+    let widthText = metrics.width;
 
-    let text = initText;
     if (widthText > 350) {
       text = formateText(initText);
     }
 
-    // // Working: text from the edge of the circle;
-    // let xCord = radius - widthText + 5;
+    // Working: text from the edge of the circle;
+    // let xCord = radius / 2 - widthText + 5;
     // console.log(xCord);
-    // //Working: section ends here.
+    //Working: section ends here.
 
     ctx.fillText(text, radius / 1.6, 10, radius / 1.5);
     ctx.restore();
@@ -185,4 +188,20 @@ function isColor(colorName) {
 function randomColor() {
   let randomCol = "hsla(" + Math.random() * 360 + ", 100%, 50%, 1)";
   return randomCol;
+}
+
+// Need improvement
+function validFontSize(angle) {
+  let fontSize = 24;
+
+  if (angle < 0.25) {
+    fontSize = 20;
+  }
+  if (angle < 0.15) {
+    fontSize = 16;
+  }
+  if (angle > 2) {
+    fontSize = 48;
+  }
+  return fontSize;
 }
