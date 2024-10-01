@@ -75,18 +75,25 @@ export function drawWheel() {
     ctx.save();
     ctx.translate(centerX, centerY);
     ctx.rotate(startAngle + anglePerSegment / 2);
+
     ctx.textAlign = "center";
     ctx.fillStyle = "#000";
     ctx.font = "24px Arial";
 
     let initText = users[i]["text"];
     let widthText = ctx.measureText(initText).width;
+
     let text = initText;
     if (widthText > 350) {
       text = formateText(initText);
     }
 
-    ctx.fillText(text, radius / 1.6, 0, radius / 1.5);
+    // // Working: text from the edge of the circle;
+    // let xCord = radius - widthText + 5;
+    // console.log(xCord);
+    // //Working: section ends here.
+
+    ctx.fillText(text, radius / 1.6, 10, radius / 1.5);
     ctx.restore();
   }
   ctx.restore();
@@ -105,12 +112,17 @@ function spinWheel() {
     declareWinner();
     return;
   }
-  ctx.save();
-  ctx.translate(centerX, centerY);
-  ctx.rotate(rotation);
-  ctx.translate(-centerX, -centerY);
 
-  drawWheel();
+  // This part rotate the context image.
+  // ctx.save();
+  // ctx.translate(centerX, centerY);
+  // ctx.rotate(rotation);
+  // ctx.translate(-centerX, -centerY);
+
+  // drawWheel();
+
+  // This part rotate the full canvas.
+  canvas.style.transform = `rotate(${rotation}rad)`;
   requestAnimationFrame(spinWheel);
 }
 
