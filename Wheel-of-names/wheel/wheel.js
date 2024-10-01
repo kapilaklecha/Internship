@@ -54,11 +54,18 @@ export function drawWheel() {
       console.log("JSON must have text property and color property");
       return;
     }
-
     const startAngle = i * anglePerSegment;
     const endAngle = startAngle + anglePerSegment;
+    let color = users[i]["color"];
+    let isValid = isColor(color);
+    let randCol = randomColor();
+    if (isValid) {
+      color = users[i]["color"];
+    } else {
+      color = randCol;
+    }
 
-    ctx.fillStyle = users[i]["color"];
+    ctx.fillStyle = color;
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.arc(centerX, centerY, radius, startAngle, endAngle);
@@ -71,7 +78,7 @@ export function drawWheel() {
     ctx.textAlign = "center";
     ctx.fillStyle = "#000";
     ctx.font = "24px Arial";
-    debugger;
+
     let initText = users[i]["text"];
     let widthText = ctx.measureText(initText).width;
     let text = initText;
@@ -79,7 +86,7 @@ export function drawWheel() {
       text = formateText(initText);
     }
 
-    ctx.fillText(text, radius / 1.7, 0, radius / 1.4);
+    ctx.fillText(text, radius / 1.4, 0, radius / 1.5);
     ctx.restore();
   }
   ctx.restore();
@@ -156,4 +163,14 @@ function formateText(initText) {
   let finalText = shortText + "...";
   console.log(finalText);
   return finalText;
+}
+
+function isColor(colorName) {
+  let valid = CSS.supports("color", colorName);
+  return valid;
+}
+
+function randomColor() {
+  let randomCol = "hsla(" + Math.random() * 360 + ", 100%, 50%, 1)";
+  return randomCol;
 }
