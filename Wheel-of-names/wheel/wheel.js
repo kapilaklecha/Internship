@@ -86,7 +86,7 @@ export function drawWheel() {
       text = formateText(initText);
     }
 
-    ctx.fillText(text, radius / 1.4, 0, radius / 1.5);
+    ctx.fillText(text, radius / 1.6, 0, radius / 1.5);
     ctx.restore();
   }
   ctx.restore();
