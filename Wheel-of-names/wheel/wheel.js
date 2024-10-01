@@ -25,14 +25,13 @@ let rotation = 0;
 let isSpinning = false;
 let spinSpeed = 0;
 
+const radius = canvas.width / 2;
+const centerX = canvas.width / 2;
+const centerY = canvas.height / 2;
+
 // Function to draw the wheel
 export function drawWheel() {
-  const radius = canvas.width / 2;
-  const centerX = canvas.width / 2;
-  const centerY = canvas.height / 2;
-
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
   if (users.length === 0) {
     ctx.beginPath();
     ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
@@ -52,15 +51,14 @@ export function drawWheel() {
       ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
       ctx.fillStyle = "rgb(225, 225, 225)";
       ctx.fill();
-      // throw new Error("JSON must have text property and color property");
       console.log("JSON must have text property and color property");
       return;
     }
-    const startAngle = i * anglePerSegment + rotation;
+
+    const startAngle = i * anglePerSegment;
     const endAngle = startAngle + anglePerSegment;
 
     ctx.fillStyle = users[i]["color"];
-    // users[i]["color"] = colors[i % colors.length];
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.arc(centerX, centerY, radius, startAngle, endAngle);
@@ -73,9 +71,18 @@ export function drawWheel() {
     ctx.textAlign = "center";
     ctx.fillStyle = "#000";
     ctx.font = "24px Arial";
-    ctx.fillText(users[i]["text"], radius / 1.5, 0);
+    debugger;
+    let initText = users[i]["text"];
+    let widthText = ctx.measureText(initText).width;
+    let text = initText;
+    if (widthText > 350) {
+      text = formateText(initText);
+    }
+
+    ctx.fillText(text, radius / 1.7, 0, radius / 1.4);
     ctx.restore();
   }
+  ctx.restore();
 }
 
 // function to spin the wheel and update it to ui.
@@ -91,6 +98,10 @@ function spinWheel() {
     declareWinner();
     return;
   }
+  ctx.save();
+  ctx.translate(centerX, centerY);
+  ctx.rotate(rotation);
+  ctx.translate(-centerX, -centerY);
 
   drawWheel();
   requestAnimationFrame(spinWheel);
@@ -100,7 +111,7 @@ function spinWheel() {
 function startSpin() {
   if (isSpinning || users.length === 0) return;
   isSpinning = true;
-  spinSpeed = Math.random() * 1; // spin speed can be controlled form here.
+  spinSpeed = Math.random() * 1; // spin speed can be controlled from here.
   spinWheel();
 }
 
@@ -108,10 +119,8 @@ function startSpin() {
 function declareWinner() {
   // Calculate the winner.
   const anglePerSegment = (2 * Math.PI) / users.length;
-  const finalAngle = rotation % (2 * Math.PI);
-  const winningIndex = Math.floor(
-    (users.length - finalAngle / anglePerSegment) % users.length
-  );
+  const finalAngle = (2 * Math.PI - (rotation % (2 * Math.PI))) % (2 * Math.PI);
+  const winningIndex = Math.floor(finalAngle / anglePerSegment);
   const winnerName = users[winningIndex]["text"];
   const winnerColor = users[winningIndex]["color"];
 
@@ -134,10 +143,17 @@ canvas.addEventListener("click", startSpin);
 
 drawWheel();
 
-// fuction to close the popup.
+// Function to close the popup
 function closePopup() {
   popup.style.display = "none";
 }
 
 popClose.addEventListener("click", closePopup);
 popCloseBtn.addEventListener("click", closePopup);
+
+function formateText(initText) {
+  let shortText = initText.slice(0, 20);
+  let finalText = shortText + "...";
+  console.log(finalText);
+  return finalText;
+}
