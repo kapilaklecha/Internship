@@ -87,6 +87,7 @@ export function drawWheel() {
     let metrics = ctx.measureText(initText);
     let widthText = metrics.width;
 
+    let text = initText;
     if (widthText > 350) {
       text = formateText(initText);
     }
