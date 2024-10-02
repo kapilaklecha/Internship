@@ -80,7 +80,7 @@ export function drawWheel() {
 
     let initText = users[i]["text"];
 
-    let arcLength = 50 * anglePerSegment;
+    let arcLength = 40 * anglePerSegment;
     let fontSize = getMaxFontSize(ctx, initText, arcLength);
     console.log(fontSize);
     ctx.textAlign = "center";
@@ -100,7 +100,7 @@ export function drawWheel() {
     // console.log(xCord);
     //Working: section ends here.
 
-    ctx.fillText(text, radius / 1.5, 0, radius / 1.5);
+    ctx.fillText(text, radius / 1.6, 0, radius / 1.5);
     ctx.restore();
   }
   ctx.restore();
@@ -195,7 +195,7 @@ function randomColor() {
 
 function getMaxFontSize(ctx, text, maxHeight) {
   console.log(maxHeight, "maxHeight");
-  let fontSize = 32;
+  let fontSize = 48;
   const minFontSize = 1;
 
   ctx.font = `${fontSize}px Arial`;
