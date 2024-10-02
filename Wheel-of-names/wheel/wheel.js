@@ -43,7 +43,6 @@ export function drawWheel() {
   const anglePerSegment = (2 * Math.PI) / users.length;
 
   for (let i = 0; i < users.length; i++) {
-    console.log(users);
     if (
       (users.length > 0 && users[i]["text"] === undefined) ||
       users[i]["color"] === undefined
