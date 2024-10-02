@@ -211,5 +211,9 @@ function getMaxFontSize(ctx, text, maxHeight) {
       metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
   }
 
+  if (fontSize <= 1) {
+    fontSize = 0;
+  }
+
   return fontSize;
 }
