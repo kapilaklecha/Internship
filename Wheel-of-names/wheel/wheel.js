@@ -43,6 +43,7 @@ export function drawWheel() {
   const anglePerSegment = (2 * Math.PI) / users.length;
 
   for (let i = 0; i < users.length; i++) {
+    console.log(users);
     if (
       (users.length > 0 && users[i]["text"] === undefined) ||
       users[i]["color"] === undefined
@@ -82,7 +83,7 @@ export function drawWheel() {
 
     let arcLength = 40 * anglePerSegment;
     let fontSize = getMaxFontSize(ctx, initText, arcLength);
-    console.log(fontSize);
+
     ctx.textAlign = "center";
     ctx.fillStyle = "#000";
     ctx.font = `${fontSize}px Arial`;
@@ -194,7 +195,6 @@ function randomColor() {
 }
 
 function getMaxFontSize(ctx, text, maxHeight) {
-  console.log(maxHeight, "maxHeight");
   let fontSize = 48;
   const minFontSize = 1;
 
