@@ -77,13 +77,16 @@ export function drawWheel() {
     ctx.rotate(startAngle + anglePerSegment / 2);
 
     // We can add a switch statement to add more cases with different angles and sizes for font in this function
-    let fontSize = validFontSize(anglePerSegment);
 
+    let initText = users[i]["text"];
+
+    let arcLength = 50 * anglePerSegment;
+    let fontSize = getMaxFontSize(ctx, initText, arcLength);
+    console.log(fontSize);
     ctx.textAlign = "center";
     ctx.fillStyle = "#000";
     ctx.font = `${fontSize}px Arial`;
 
-    let initText = users[i]["text"];
     let metrics = ctx.measureText(initText);
     let widthText = metrics.width;
 
@@ -97,7 +100,7 @@ export function drawWheel() {
     // console.log(xCord);
     //Working: section ends here.
 
-    ctx.fillText(text, radius / 1.6, 10, radius / 1.5);
+    ctx.fillText(text, radius / 1.5, 0, radius / 1.5);
     ctx.restore();
   }
   ctx.restore();
@@ -177,7 +180,6 @@ popCloseBtn.addEventListener("click", closePopup);
 function formateText(initText) {
   let shortText = initText.slice(0, 20);
   let finalText = shortText + "...";
-  console.log(finalText);
   return finalText;
 }
 
@@ -204,5 +206,26 @@ function validFontSize(angle) {
   if (angle > 2) {
     fontSize = 48;
   }
+  return fontSize;
+}
+
+function getMaxFontSize(ctx, text, maxHeight) {
+  console.log(maxHeight, "maxHeight");
+  let fontSize = 32;
+  const minFontSize = 1;
+
+  ctx.font = `${fontSize}px Arial`;
+  let metrics = ctx.measureText(text);
+  let textHeight =
+    metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+
+  while (textHeight > maxHeight && fontSize > minFontSize) {
+    fontSize--;
+    ctx.font = `${fontSize}px Arial`;
+    metrics = ctx.measureText(text);
+    textHeight =
+      metrics.actualBoundingBoxAscent + metrics.actualBoundingBoxDescent;
+  }
+
   return fontSize;
 }
