@@ -193,22 +193,6 @@ function randomColor() {
   return randomCol;
 }
 
-// Need improvement
-function validFontSize(angle) {
-  let fontSize = 24;
-
-  if (angle < 0.25) {
-    fontSize = 20;
-  }
-  if (angle < 0.15) {
-    fontSize = 16;
-  }
-  if (angle > 2) {
-    fontSize = 48;
-  }
-  return fontSize;
-}
-
 function getMaxFontSize(ctx, text, maxHeight) {
   console.log(maxHeight, "maxHeight");
   let fontSize = 32;
